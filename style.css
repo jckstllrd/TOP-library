@@ -75,7 +75,7 @@ body {
   font-weight: 500;
 }
 
-.new-book {
+.new-book-btn {
   margin: 20px;
   border: none;
   font-size: 18px;
@@ -86,7 +86,7 @@ body {
   transition: transform 0.2s ease;
 }
 
-.new-book:hover {
+.new-book-btn:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
 }
@@ -114,6 +114,19 @@ align-items: center;
     border: 1px solid black;
     justify-content: center;
     flex-direction: column;
+}
+
+.form-header {
+    display: flex;
+
+}
+
+.close-window-btn {
+    align-self: right;
+}
+
+.hidden {
+    display: none;
 }
 
 .blur {

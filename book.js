@@ -27,7 +27,7 @@ function Book(id, title, author, pages, hasRead) {
 function addBookToLibrary(title, author, pages, hasRead) {
   let book = new Book(crypto.randomUUID(), title, author, pages, hasRead);
   myLibrary.push(book);
-  return true;
+  return book;
 }
 
 addBookToLibrary("The Hobbit", "J.R.R Tolkien", 295, false);
@@ -53,4 +53,35 @@ function createBookCard(book) {
 
 myLibrary.forEach((book) => {
   createBookCard(book);
+});
+
+const newBookBtn = document.querySelector(".new-book-btn");
+const newBookFormCont = document.querySelector(".form-container");
+const container = document.querySelector(".container");
+
+newBookBtn.addEventListener("click", () => {
+  newBookFormCont.classList.toggle("hidden");
+  container.classList.toggle("blur");
+});
+
+let closeWinBtn = document.querySelector(".close-window-btn");
+closeWinBtn.addEventListener("click", () => {
+  newBookFormCont.classList.toggle("hidden");
+  container.classList.toggle("blur");
+});
+
+const addBookBtn = document.querySelector(".add-book-btn");
+addBookBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log(e.target.form.pages);
+
+  let title = e.target.form.title.value;
+  let author = e.target.form.author.value;
+  let pages = e.target.form.pages.value;
+  let read = e.target.form.read.checked;
+  console.log(read);
+  let book = addBookToLibrary(title, author, pages, read);
+  createBookCard(book);
+  newBookFormCont.classList.toggle("hidden");
+  container.classList.toggle("blur");
 });
