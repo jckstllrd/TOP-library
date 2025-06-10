@@ -38,10 +38,28 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
+  display: flex;
+  justify-content: space-between;
 }
 
 .card:hover {
   transform: translateY(-5px);
+}
+
+.delete-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.delete {
+  background-color: white;
+  height: fit-content;
+  border: none;
+}
+
+.delete:hover {
+    color: red;
 }
 
 .details {
@@ -100,33 +118,31 @@ body {
   box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-    justify-content: center;
-align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
-.new-book-form
-{
-    width: 80%;
-    height: 80%;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    border: 1px solid black;
-    justify-content: center;
-    flex-direction: column;
+.new-book-form {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid black;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .form-header {
-    display: flex;
-
+  display: flex;
 }
 
 .close-window-btn {
-    align-self: right;
+  align-self: right;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .blur {
