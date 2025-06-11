@@ -12,10 +12,6 @@ function Book(id, title, author, pages, hasRead) {
   this.getInfo = function () {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.hasRead}`;
   };
-
-  function toggleRead(read) {
-    this.hasRead = read;
-  }
 }
 
 // Function to add a book to the library
@@ -35,7 +31,6 @@ const addBookBtn = document.querySelector(".add-book-btn");
 
 // Function to remove a book card from the DOM and library
 function removeBookCard(bookID) {
-  
   myLibrary.forEach((newBook) => {
     if (bookID === newBook.ID) {
       myLibrary.splice(myLibrary.indexOf(newBook), 1);
@@ -49,6 +44,20 @@ function removeBookCard(bookID) {
   }
 }
 
+// function toggleRead(bookID) {
+//   myLibrary.forEach((newBook) => {
+//     if (bookID === newBook.ID) {
+//       newBook.toggleRead();
+//       return;
+//     }
+//   });
+
+//   const bookCard = books.querySelector(`[data-book-id="${bookID}"]`);
+//   if (bookCard) {
+//     bookCard.querySelector(".read=status").textContent = book.hasRead;
+//   }
+// }
+
 // Function to create a book card and add it to the DOM
 function createBookCard(book) {
   const template = document.getElementById("book-card-template");
@@ -60,18 +69,26 @@ function createBookCard(book) {
   bookCard.querySelector(".pages").textContent = `${book.pages} pages`;
   bookCard.querySelector(".read-status").textContent = book.hasRead;
 
-
-  const cardElement = bookCard.querySelector(".card")
+  const cardElement = bookCard.querySelector(".card");
   cardElement.setAttribute("data-book-id", book.ID);
 
   // Add the card to the container
   books.appendChild(bookCard);
 
-  const deleteBtn = cardElement.querySelector('.delete')
+  const deleteBtn = cardElement.querySelector(".delete");
   deleteBtn.addEventListener("click", () => {
-    console.log("here");
-    removeBookCard(book.ID)
-  })
+    removeBookCard(book.ID);
+  });
+
+  const readBtn = cardElement.querySelector(".read-btn");
+  readBtn.addEventListener("click", () => {
+
+    // Toggle the read status in the library
+    book.hasRead = book.hasRead === "read" ? "not read yet" : "read";
+
+    // Update the DOM to reflect the new read status
+    cardElement.querySelector(".read-status").textContent = book.hasRead;
+  });
 }
 
 // Initialize the library with sample books
