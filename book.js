@@ -1,17 +1,19 @@
 // Library array to store books
 const myLibrary = [];
 
-// Book constructor function
-function Book(id, title, author, pages, hasRead) {
-  this.ID = id;
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.hasRead = hasRead ? "read" : "not read yet";
+//Book Class
+class Book {
+  constructor(id, title, author, pages, hasRead) {
+    this.ID = id;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.hasRead = hasRead ? "read" : "not read yet";
+  }
 
-  this.getInfo = function () {
+  get info() {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.hasRead}`;
-  };
+  }
 }
 
 // Function to add a book to the library
@@ -44,20 +46,6 @@ function removeBookCard(bookID) {
   }
 }
 
-// function toggleRead(bookID) {
-//   myLibrary.forEach((newBook) => {
-//     if (bookID === newBook.ID) {
-//       newBook.toggleRead();
-//       return;
-//     }
-//   });
-
-//   const bookCard = books.querySelector(`[data-book-id="${bookID}"]`);
-//   if (bookCard) {
-//     bookCard.querySelector(".read=status").textContent = book.hasRead;
-//   }
-// }
-
 // Function to create a book card and add it to the DOM
 function createBookCard(book) {
   const template = document.getElementById("book-card-template");
@@ -82,7 +70,6 @@ function createBookCard(book) {
 
   const readBtn = cardElement.querySelector(".read-btn");
   readBtn.addEventListener("click", () => {
-
     // Toggle the read status in the library
     book.hasRead = book.hasRead === "read" ? "not read yet" : "read";
 
